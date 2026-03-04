@@ -1,0 +1,235 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --pink-color: #EB567B;
+}
+
+.c1, .c6, .c7, .c8, .c9, .c10 {
+    padding-bottom: 13px;
+}
+
+button {
+  color: #fff !important;
+}
+
+fieldset {
+    border-radius: 12px !important;
+    border-color: rgba(62, 62, 62, 0.23) !important;
+}
+
+
+.my-animation {
+  position: relative; /* Needed for pseudo-element positioning */
+  color: white; /* Default text color */
+  display: inline-block; /* Prevent full width */
+  overflow: hidden; /* Ensure animation bounds */
+  transition: color 0.6s ease-in-out; /* Smooth text color transition */
+}
+
+.my-animation::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%; /* Full width */
+  background-color: white; /* Background color */
+  transform: scaleX(0); /* Start invisible */
+  transform-origin: left; /* Animate from left to right */
+  transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1); /* Smooth custom easing */
+  z-index: -1; /* Place behind the text */
+}
+
+.my-animation:hover::before {
+  transform: scaleX(1); /* Expand background */
+}
+
+.my-animation:hover {
+  color: black !important; /* Text color change on hover */
+}
+
+.status-dot {
+    mix-blend-mode: normal;
+    background-color: #15ff00;
+    width: .4em;
+    height: .4em;
+}
+
+.font-gray {
+    color: #acacac;
+    font-family: "MyCustomFont", sans-serif;
+}
+
+.graycolor {
+    color: #717171;
+}
+
+.zoom {
+    transition: transform .2s;
+}
+.zoom:hover {
+    transform: scale(1.02);
+}
+
+.graycube {
+    background-color: #141414;
+    color: azure;
+    width: 400px;
+}
+
+/* animations */
+.glow {
+    animation: glow 2s ease-in-out infinite alternate;
+}
+@keyframes glow {
+    from {
+        text-shadow: 0 0 20px #ffffff;
+    }
+    to {
+        text-shadow: 0 0 30px #ffffff, 0 0 10px #c4c4c4;
+    }
+}
+
+/* GLITCH */
+.glitchtext{
+    animation: glitch 3s linear infinite;
+}
+
+@keyframes glitch{
+    2%,64%{
+        transform: translate(2px,0) skew(0deg);
+    }
+    4%,60%{
+        transform: translate(-2px,0) skew(0deg);
+    }
+    62%{
+        transform: translate(0,0) skew(5deg); 
+    }
+}
+  
+  .glitchtext:before,
+  .glitchtext:after{
+    content: attr(title);
+    position: absolute;
+    left: 0;
+  }
+  
+  .glitchtext:before{
+    animation: glitchTop 3s linear infinite;
+    clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+  }
+  
+  @keyframes glitchTop{
+    2%,64%{
+      transform: translate(2px,-2px);
+    }
+    4%,60%{
+      transform: translate(-2px,2px);
+    }
+    62%{
+      transform: translate(13px,-1px) skew(-13deg); 
+    }
+  }
+  
+  .glitchtext:after{
+    animation: glitchBotom 3.5s linear infinite;
+    clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+    -webkit-clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+  }
+  
+  @keyframes glitchBotom{
+    2%,64%{
+      transform: translate(-2px,0);
+    }
+    4%,60%{
+      transform: translate(-2px,0);
+    }
+    62%{
+      transform: translate(-22px,5px) skew(21deg); 
+    }
+  }
+
+  .all-divider-line {
+    width: 0; /* Start with 0 width */
+    height: 0.2rem;
+    background-color: #3e3e3e;
+    opacity: 0.5;
+    transition: width 0.8s ease-in-out; /* Smooth animation */
+  }
+  
+  .all-divider-line.active {
+    width: 100%; /* Force the animation for debugging */
+  }
+  .all-divider-line::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 0;
+    background-color: #fff; /* Change to your desired active color */
+    transition: width 1s ease-in-out;
+  }
+
+  /* SVG CORNER */
+  .small-corner {
+    width: 40px; /* Adjust to your preferred size */
+    height: 40px; /* Adjust to your preferred size */
+    position: absolute;
+    animation: glow 1.5s infinite alternate;
+  }
+  
+  .is-top-left {
+    top: 0;
+    left: 0;
+    transform: rotate(0deg); /* No rotation needed */
+    animation-delay: 0s; /* No delay */
+  }
+  
+  .is-top-right {
+    top: 0;
+    right: 0;
+    transform: rotate(90deg); /* Rotated to the right */
+    animation-delay: 2s; /* 0.3s delay */
+  }
+  
+  .is-bottom-left {
+    bottom: 0;
+    left: 0;
+    transform: rotate(270deg); /* Rotated to the left */
+    animation-delay: 0.6s; /* 0.6s delay */
+  }
+  
+  .is-bottom-right {
+    bottom: 0;
+    right: 0;
+    transform: rotate(180deg); /* Upside down */
+    animation-delay: 3s; /* 0.9s delay */
+  }
+  @keyframes glow {
+    0% {
+      opacity: 0.7; /* Initial opacity */
+    }
+    50% {
+      opacity: 1; /* Full opacity */
+    }
+    100% {
+      opacity: 0.2; /* Back to initial opacity */
+    }
+  }
+
+/* FONT */
+
+.myFont {
+    font-family: "MyCustomFont", sans-serif;
+}
+
+@font-face {
+    font-family: "MyCustomFont";
+    src: url("/my-font.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+}
